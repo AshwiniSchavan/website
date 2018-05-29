@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> Music HomePage </title>
-</head>
-<body>
-<h1> Album List</h1>
-{% if all_album %}
-    <ul>
-        {% for album in all_album  %}
-        <li><a href="/music/{{ album.id }}">{{ album.album_title }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3> You don't have any album </h3>
-{% endif %}
+{% extends 'music/base.html' %}
 
-</body>
-</html>
+<!--- Load Static file --->
+
+{% block body %}
+
+    <h1> Album List</h1>
+    {% if all_albums %}
+        <ul>
+            {% for album in all_albums  %}
+            <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3> You don't have any album </h3>
+    {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+body{
+    height: 200px;
+    height: 200px;
+    background: center url("images/music3.jpg");
+
+}
+
+.nav {
+
+    border-radius: 0  ;
+}
+
+.navbar-brand {
+
+    font-family: 'satisfy',cursive;
+}

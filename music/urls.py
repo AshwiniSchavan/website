@@ -1,5 +1,8 @@
 from django.conf.urls import url
-from music import views
+from . import views
+
+
+app_name = 'music'
 
 urlpatterns = [
     # /music
@@ -10,5 +13,7 @@ urlpatterns = [
 
     url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),
 
+    # /favorite
 
+    url(r'^(?P<album_id>[0-9]+)/favorite/$', views.favorite, name='favorite'),
 ]
