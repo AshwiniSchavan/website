@@ -1,20 +1,29 @@
-<!DOCTYPE html>
+
 {% extends 'music/base.html' %}
 
-<!--- Load Static file --->
 
 {% block body %}
-
-    <h1> Album List</h1>
-    {% if all_albums %}
+    <div class="row">
         <ul>
-            {% for album in all_albums  %}
-            <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
+            {% for album in object_list  %}
+                <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
             {% endfor %}
         </ul>
-    {% else %}
-        <h3> You don't have any album </h3>
-    {% endif %}
+    <!-- Delete -->
+    <form action="{% url 'music:album-delete ' %}">method='post' style="display :inline;"
+        {% csrf_token %}
+        <input type="hidden" name="album_id" value="{{ album.id }}">
+        <button type="submit" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </form>
+
+        <!--Favourite-->
+        <a href="#" class="btn btn-default btn-sm btn-favourite">
+            <span class="glyphicon glyphicon-star" {% if album.is %}
+        </a>
+
+    </div>
 
 
 {% endblock %}
